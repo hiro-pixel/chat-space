@@ -1,0 +1,18 @@
+.side-bar
+  .header
+    .header__box
+      %p.header__box__name
+        TEST
+      %ul.header__box__lists
+        %li.list
+          = link_to root_path do
+            = icon('far', 'edit')
+        %li.icon
+          = link_to root_path do
+            = icon('fas', 'cog')
+  .groups
+    .group
+      .group__name
+        コタキ
+      .group__message
+        test

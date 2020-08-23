@@ -1,0 +1,28 @@
+.chat
+  .header
+    .left-header
+      .left-header__title
+        chatspace group
+      .left-header__members
+        hirotaka kotaki
+        .member
+    = link_to "#", class: "right-header" do
+      Edit
+  .messages
+    .message
+      .upper-message
+        .upper-message__user-name
+          コタキ
+        .upper-message__date
+          2020/08/15
+      .lower-message
+        .lower-message__content
+          こんにちは！
+  .form
+    %form.message
+      .input-box
+        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
+        %label{class: "input-box__image"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "input-box__image__file"}
+      %input{type: "submit", name: "commit", value: "Send", class: "submit-btn"}
