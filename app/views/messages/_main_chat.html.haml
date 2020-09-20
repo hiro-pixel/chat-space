@@ -2,13 +2,15 @@
   .header
     .left-header
       .left-header__title
-        chatspace group
+        = @group.name
       .left-header__members
-        hirotaka kotaki
+        - @group.users.each do |user|
+          = user.name
         .member
-    = link_to "#", class: "right-header" do
+    = link_to new_group_path, class: "right-header" do
       Edit
   .messages
+    = render @messages
     .message
       .upper-message
         .upper-message__user-name
@@ -19,10 +21,12 @@
         .lower-message__content
           こんにちは！
   .form
-    %form.message
+    = form_for [@group, @message] do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "input-box__image__file"}
-      %input{type: "submit", name: "commit", value: "Send", class: "submit-btn"}
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Send', class: 'submit-btn'
+  .messages
+    = render partial: 'message', collection: @messages
