@@ -10,9 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20200823071541) do
-=======
 ActiveRecord::Schema.define(version: 20200907233005) do
 
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -30,7 +27,6 @@ ActiveRecord::Schema.define(version: 20200907233005) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_groups_on_name", unique: true, using: :btree
   end
->>>>>>> b92a31d... Message function
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -53,14 +49,12 @@ ActiveRecord::Schema.define(version: 20200907233005) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-<<<<<<< HEAD
-=======
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
->>>>>>> b92a31d... Message function
 end
