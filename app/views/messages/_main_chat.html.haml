@@ -9,17 +9,10 @@
         .member
     = link_to new_group_path, class: "right-header" do
       Edit
+
   .messages
-    = render @messages
-    .message
-      .upper-message
-        .upper-message__user-name
-          コタキ
-        .upper-message__date
-          2020/08/15
-      .lower-message
-        .lower-message__content
-          こんにちは！
+    = render partial: 'message', collection: @messages
+  
   .form
     = form_for [@group, @message] do |f|
       .input-box
@@ -28,5 +21,3 @@
           = icon('fas', 'image', class: 'icon')
           = f.file_field :image, class: 'input-box__image__file'
       = f.submit 'Send', class: 'submit-btn'
-  .messages
-    = render partial: 'message', collection: @messages
